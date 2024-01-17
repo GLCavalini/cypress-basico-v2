@@ -75,10 +75,17 @@
             .should('have.value', '')
     })
 
-    it.only('exibe mensagem de erro ao submeter o formulario sem preencher os campos obrigatórios', function() {
+    it('exibe mensagem de erro ao submeter o formulario sem preencher os campos obrigatórios', function() {
         cy.get('button[type="submit"]').click()
 
         cy.get('.error').should('be.visible')
+    })
+
+    it('envia formulário com sucesso usando um comando customizado', function() {
+        cy.fillMandatoryFieldsAndSubmit()
+
+        cy.get('.success').should('be.visible')
+
     })
 
   }) 
