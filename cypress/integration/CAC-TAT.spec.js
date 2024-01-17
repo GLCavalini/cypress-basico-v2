@@ -47,7 +47,7 @@
         cy.get('.error').should('be.visible')
     })
 
-    it.only('preenche e limpa os campos nome, sobrenome, email e telefone', function () {
+    it('preenche e limpa os campos nome, sobrenome, email e telefone', function () {
         cy.get('#firstName')
             .type('gian')
             .should('have.value', 'gian')
@@ -74,6 +74,13 @@
             .clear()
             .should('have.value', '')
     })
+
+    it.only('exibe mensagem de erro ao submeter o formulario sem preencher os campos obrigatórios', function() {
+        cy.get('button[type="submit"]').click()
+
+        cy.get('.error').should('be.visible')
+    })
+
   }) 
 
   
